@@ -67,7 +67,7 @@ public class TestIndex {
 
 
         //创建索引对象
-        CreateIndexRequest createIndexRequest = new CreateIndexRequest("itheima_book");
+        CreateIndexRequest createIndexRequest = new CreateIndexRequest("my_book");
         //设置参数
         createIndexRequest.settings(Settings.builder().put("number_of_shards", "1").put("number_of_replicas", "0"));
         //指定映射1
@@ -260,7 +260,7 @@ public class TestIndex {
     @Test
     public void testDeleteIndexAsync() throws IOException {
         //创建删除索引请求
-        DeleteIndexRequest deleteIndexRequest = new DeleteIndexRequest("itheima_book");
+        DeleteIndexRequest deleteIndexRequest = new DeleteIndexRequest("my_book");
         //        执行
         ActionListener<AcknowledgedResponse> listener = new ActionListener<AcknowledgedResponse>() {
             @Override
@@ -277,14 +277,14 @@ public class TestIndex {
         };
 
 
-//        AcknowledgedResponse delete = client.indices().delete(deleteIndexRequest, RequestOptions.DEFAULT);
+        AcknowledgedResponse delete = client.indices().delete(deleteIndexRequest, RequestOptions.DEFAULT);
 
     }
 
     //index exist api
     @Test
     public void testExistIndex() throws IOException {
-        GetIndexRequest request=new GetIndexRequest("itheima_book");
+        GetIndexRequest request=new GetIndexRequest("my_book");
         //参数
         request.local(false);//从主节点返回本地索引信息状态
         request.humanReadable(true);//以适合人类的格式返回
@@ -298,7 +298,7 @@ public class TestIndex {
     //关闭索引
     @Test
     public void testCloseIndex() throws IOException {
-        CloseIndexRequest request=new CloseIndexRequest("itheima_book");
+        CloseIndexRequest request=new CloseIndexRequest("my_book");
 
         AcknowledgedResponse close = client.indices().close(request, RequestOptions.DEFAULT);
 
@@ -309,7 +309,7 @@ public class TestIndex {
     //开启索引
     @Test
     public void testOpenIndex() throws IOException {
-        OpenIndexRequest request=new OpenIndexRequest("itheima_book");
+        OpenIndexRequest request=new OpenIndexRequest("my_book");
 
         OpenIndexResponse open = client.indices().open(request, RequestOptions.DEFAULT);
 
