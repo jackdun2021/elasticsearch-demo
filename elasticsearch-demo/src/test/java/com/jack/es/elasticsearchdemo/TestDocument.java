@@ -49,7 +49,7 @@ public class TestDocument {
     public void testGet() throws IOException {
 //      1构建请求
 
-        GetRequest getRequest = new GetRequest("test_post", "1");
+        GetRequest getRequest = new GetRequest("test_index", "1");
 //        ===========可选参数==========
 //        String[] includes=new String[]{"user","message"};
 //        String[] excludes= Strings.EMPTY_ARRAY;
@@ -101,6 +101,7 @@ public class TestDocument {
 
         } else {
 
+            System.out.println("数据不存在");
         }
 
 
